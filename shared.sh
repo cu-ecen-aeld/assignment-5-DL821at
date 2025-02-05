@@ -1,5 +1,6 @@
 #!/bin/sh
 # Shared definitions for buildroot scripts
+export FORCE_UNSAFE_CONFIGURE=1
 
 # The defconfig from the buildroot directory we use for qemu builds
 QEMU_DEFCONFIG=configs/qemu_aarch64_virt_defconfig
