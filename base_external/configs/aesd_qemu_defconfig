@@ -11,7 +11,6 @@ BR2_PACKAGE_HOST_QEMU_SYSTEM_MODE=y       # QEMU system mode support (aesd_qemu)
 BR2_ROOTFS_POST_IMAGE_SCRIPT="../base_external/scripts/post-image.sh"
 BR2_EXTERNAL="../base_external"
 
-
 BR2_ROOTFS_OVERLAY="../base_external/rootfs_overlay"
 BR2_LINUX_KERNEL=y
 BR2_LINUX_KERNEL_USE_ARCH_DEFAULT_CONFIG=y
@@ -27,3 +26,7 @@ BR2_PACKAGE_LDD3=y
 # [Added] Enable BusyBox syslog daemon to capture kernel messages in /var/log/messages.
 BR2_PACKAGE_BUSYBOX=y
 BR2_BUSYBOX_CONFIG_FRAGMENT_FILES="board/qemu/syslogd.cfg"
+
+# Force inclusion of external packages by sourcing their Config.in files.
+source "$BR2_EXTERNAL_project_base_PATH/package/aesd-assignments/Config.in"
+source "$BR2_EXTERNAL_project_base_PATH/package/ldd3/Config.in"
