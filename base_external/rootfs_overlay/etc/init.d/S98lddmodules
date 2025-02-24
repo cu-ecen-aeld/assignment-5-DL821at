@@ -5,11 +5,11 @@
 case "$1" in
     start)
         echo "Loading scull module..."
-        /sbin/insmod /lib/modules/$(uname -r)/updates/scull.ko
+        /sbin/insmod /lib/modules/6.6.50/updates/scull.ko
         echo "Loading faulty module..."
-        /sbin/insmod /lib/modules/$(uname -r)/updates/faulty.ko
+        /sbin/insmod /lib/modules/6.6.50/updates/faulty.ko
         echo "Loading hello module..."
-        /sbin/insmod /lib/modules/$(uname -r)/updates/hello.ko
+        /sbin/insmod /lib/modules/6.6.50/updates/hello.ko
         ;;
     stop)
         echo "Unloading scull module..."

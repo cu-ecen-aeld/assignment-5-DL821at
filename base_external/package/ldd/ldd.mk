@@ -5,18 +5,20 @@ LDD_GIT_SUBMODULES = YES
 LDD_MODULE_SUBDIRS += scull
 LDD_MODULE_SUBDIRS += misc-modules
 
-define LDD_INSTALL_TARGET_CMDS
-	# Ensure the target directory exists
-	mkdir -p $(TARGET_DIR)/lib/modules/$(BR2_LINUX_KERNEL_VERSION)/updates
-	$(INSTALL) -D -m 0644 $(BUILD_DIR)/scull/scull.ko $(TARGET_DIR)/lib/modules/$(BR2_LINUX_KERNEL_VERSION)/updates/scull.ko
-	$(INSTALL) -D -m 0644 $(BUILD_DIR)/misc-modules/hello.ko $(TARGET_DIR)/lib/modules/$(BR2_LINUX_KERNEL_VERSION)/updates/hello.ko
-	$(INSTALL) -D -m 0644 $(BUILD_DIR)/misc-modules/faulty.ko $(TARGET_DIR)/lib/modules/$(BR2_LINUX_KERNEL_VERSION)/updates/faulty.ko
+# Explicitly define the kernel version used by Buildroot.
+KERNEL_VER = 6.6.50
 
-	# Create a minimal modules.dep file so that modprobe can find these modules.
-	# This file lists each module with no dependencies.
-	echo "/lib/modules/$(BR2_LINUX_KERNEL_VERSION)/updates/hello.ko:" > $(TARGET_DIR)/lib/modules/$(BR2_LINUX_KERNEL_VERSION)/modules.dep
-	echo "/lib/modules/$(BR2_LINUX_KERNEL_VERSION)/updates/scull.ko:" >> $(TARGET_DIR)/lib/modules/$(BR2_LINUX_KERNEL_VERSION)/modules.dep
-	echo "/lib/modules/$(BR2_LINUX_KERNEL_VERSION)/updates/faulty.ko:" >> $(TARGET_DIR)/lib/modules/$(BR2_LINUX_KERNEL_VERSION)/modules.dep
+define LDD_INSTALL_TARGET_CMDS
+	# Create the target directory for external modules.
+	mkdir -p $(TARGET_DIR)/lib/modules/$(KERNEL_VER)/updates
+	$(INSTALL) -D -m 0644 $(BUILD_DIR)/scull/scull.ko $(TARGET_DIR)/lib/modules/$(KERNEL_VER)/updates/scull.ko
+	$(INSTALL) -D -m 0644 $(BUILD_DIR)/misc-modules/hello.ko $(TARGET_DIR)/lib/modules/$(KERNEL_VER)/updates/hello.ko
+	$(INSTALL) -D -m 0644 $(BUILD_DIR)/misc-modules/faulty.ko $(TARGET_DIR)/lib/modules/$(KERNEL_VER)/updates/faulty.ko
+
+	# Create a minimal modules.dep file so that modprobe can locate these modules.
+	echo "/lib/modules/$(KERNEL_VER)/updates/hello.ko:" > $(TARGET_DIR)/lib/modules/$(KERNEL_VER)/modules.dep
+	echo "/lib/modules/$(KERNEL_VER)/updates/scull.ko:" >> $(TARGET_DIR)/lib/modules/$(KERNEL_VER)/modules.dep
+	echo "/lib/modules/$(KERNEL_VER)/updates/faulty.ko:" >> $(TARGET_DIR)/lib/modules/$(KERNEL_VER)/modules.dep
 endef
 
 $(eval $(kernel-module))
