@@ -9,6 +9,7 @@ BR2_PACKAGE_HOST_MKPASSWD=y               # Host mkpasswd utility (aesd_qemu)
 BR2_PACKAGE_HOST_QEMU=y                   # Host QEMU support (aesd_qemu)
 BR2_PACKAGE_HOST_QEMU_SYSTEM_MODE=y       # QEMU system mode support (aesd_qemu)
 BR2_ROOTFS_POST_IMAGE_SCRIPT="../base_external/scripts/post-image.sh"
+BR2_EXTERNAL="../base_external"
 
 
 BR2_ROOTFS_OVERLAY="../base_external/rootfs_overlay"
