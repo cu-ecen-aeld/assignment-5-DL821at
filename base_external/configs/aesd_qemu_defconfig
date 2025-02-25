@@ -28,5 +28,5 @@ BR2_PACKAGE_BUSYBOX=y
 BR2_BUSYBOX_CONFIG_FRAGMENT_FILES="board/qemu/syslogd.cfg"
 
 # Force inclusion of external packages by sourcing their Config.in files.
-source "$BR2_EXTERNAL_project_base_PATH/package/aesd-assignments/Config.in"
-source "$BR2_EXTERNAL_project_base_PATH/package/ldd3/Config.in"
+BR2_EXTERNAL_PROJECT_BASE_PATH="../base_external"
+
