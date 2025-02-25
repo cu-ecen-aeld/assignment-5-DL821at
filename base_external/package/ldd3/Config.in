@@ -1,4 +1,4 @@
-config BR2_PACKAGE_LDD
+config BR2_PACKAGE_LDD3
 	bool "ldd3"
 	help
 	  Includes scull and misc-modules in the kernel image.
