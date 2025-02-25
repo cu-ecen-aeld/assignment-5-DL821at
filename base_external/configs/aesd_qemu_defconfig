@@ -24,3 +24,4 @@ BR2_PACKAGE_LDD3=y
 # [Added] Enable BusyBox syslog daemon to capture kernel messages in /var/log/messages.
 BR2_PACKAGE_BUSYBOX=y
 BR2_BUSYBOX_CONFIG_FRAGMENT_FILES="board/qemu/syslogd.cfg"
+source "$BR2_EXTERNAL_project_base_PATH/package/ldd3/Config.in"
