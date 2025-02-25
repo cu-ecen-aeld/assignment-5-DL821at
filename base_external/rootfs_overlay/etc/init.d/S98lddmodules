@@ -1,27 +1,25 @@
 #!/bin/sh
-#
-# S98lddmodules - load/unload custom external modules
-#
+
 case "$1" in
-    start)
-        echo "Loading scull module..."
-        /sbin/insmod /lib/modules/6.6.50/updates/scull.ko
-        echo "Loading faulty module..."
-        /sbin/insmod /lib/modules/6.6.50/updates/faulty.ko
-        echo "Loading hello module..."
-        /sbin/insmod /lib/modules/6.6.50/updates/hello.ko
-        ;;
-    stop)
-        echo "Unloading scull module..."
-        /sbin/rmmod scull
-        echo "Unloading faulty module..."
-        /sbin/rmmod faulty
-        echo "Unloading hello module..."
-        /sbin/rmmod hello
-        ;;
-    *)
-        echo "Usage: $0 {start|stop}"
-        exit 1
-        ;;
+	start)
+		echo "Loading scull..."
+		scull_load
+		echo "Loading faulty..."
+		module_load faulty
+		echo "Loading hello..."
+		modprobe hello
+		;;
+	stop)
+		echo "Unloading scull..."
+		scull_unload
+		echo "Unloading faulty..."
+		module_unload faulty
+		echo "Unloading hello..."
+		rmmod hello
+		;;
+	*)
+		echo "Usage: $0 {start|stop}"
+		exit 1
 esac
+
 exit 0
