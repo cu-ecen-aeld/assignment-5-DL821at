@@ -6,7 +6,7 @@ case "$1" in
   start)
     echo "Starting dropbear SSH server after a short delay..."
     # Wait for the network to come up
-    sleep 5
+    #sleep 5
     # Ensure /etc/dropbear exists (it should, from the overlay)
     [ ! -d /etc/dropbear ] && mkdir -p /etc/dropbear && chmod 755 /etc/dropbear
     # Start dropbear with the pre-generated keys (no need to use -R now)
@@ -26,4 +26,4 @@ case "$1" in
     exit 1
     ;;
 esac
-exit 0
+exit
