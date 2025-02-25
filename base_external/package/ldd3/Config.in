@@ -1,5 +1,0 @@
-config BR2_PACKAGE_LDD3
-    bool "ldd3"
-    help
-      Includes scull and misc-modules in the kernel image.
-      Used to understand buildroot external trees and package builds.

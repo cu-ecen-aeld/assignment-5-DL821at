@@ -8,8 +8,6 @@ BR2_PACKAGE_DROPBEAR=y                    # Enable Dropbear SSH server (aesd_qem
 BR2_PACKAGE_HOST_MKPASSWD=y               # Host mkpasswd utility (aesd_qemu)
 BR2_PACKAGE_HOST_QEMU=y                   # Host QEMU support (aesd_qemu)
 BR2_PACKAGE_HOST_QEMU_SYSTEM_MODE=y       # QEMU system mode support (aesd_qemu)
-BR2_ROOTFS_POST_IMAGE_SCRIPT="../base_external/scripts/post-image.sh"
-BR2_EXTERNAL="../base_external"
 
 BR2_ROOTFS_OVERLAY="../base_external/rootfs_overlay"
 BR2_LINUX_KERNEL=y
@@ -21,12 +19,8 @@ BR2_TARGET_ROOTFS_EXT2_4=y
 BR2_TARGET_ROOTFS_EXT2_SIZE="200M"
 # BR2_TARGET_ROOTFS_TAR is not set
 BR2_PACKAGE_AESD_ASSIGNMENTS=y
-BR2_PACKAGE_LDD3=y
+BR2_PACKAGE_LDD=y
 
 # [Added] Enable BusyBox syslog daemon to capture kernel messages in /var/log/messages.
 BR2_PACKAGE_BUSYBOX=y
 BR2_BUSYBOX_CONFIG_FRAGMENT_FILES="board/qemu/syslogd.cfg"
-
-# Force inclusion of external packages by sourcing their Config.in files.
-BR2_EXTERNAL_PROJECT_BASE_PATH="../base_external"
-
