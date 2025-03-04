@@ -5,8 +5,8 @@
 #
 ##############################################################
 
-LDD_VERSION = 'b0217c71505cb5fe2bd4b814503e5f815694dbef'
-LDD_SITE = 'git@github.com:cu-ecen-aeld/assignment-7-davidxvuong.git'
+LDD_VERSION = 'd9c8eeb916f4f39658888e92d6c8e05cd437882e'
+LDD_SITE = 'git@github.com:cu-ecen-aeld/assignment-7-DL821at.git'
 LDD_SITE_METHOD = git
 LDD_GIT_SUBMODULES = YES
 
